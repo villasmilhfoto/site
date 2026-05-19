@@ -413,13 +413,13 @@ async function loadPostList(startAuthor, startPermlink) {
       hasPrev,
       hasNext,
       () => {
-        // ← Newer: pop current page cursor, reload from the one before it
+        //  ← Más reciente: pop current page cursor, reload from the one before it
         pageHistory.pop();
         const cursor = pageHistory[pageHistory.length - 1];
         loadPostList(cursor?.author, cursor?.permlink);
       },
       () => {
-        // Older →: push the last post as the cursor for the next page
+        // Más antiguo →: push the last post as the cursor for the next page
         pageHistory.push({ author: lastPost.author, permlink: lastPost.permlink });
         loadPostList(lastPost.author, lastPost.permlink);
       }
@@ -611,7 +611,7 @@ async function initPost() {
       <article class="full-post">
         <header class="post-header">
           <div class="post-meta-top">
-            <a href="index.html" class="back-link">← Back</a>
+            <a href="index.html" class="back-link">← Atrás</a>
             <span class="post-date">${formatDate(post.created)}</span>
           </div>
           <h1 class="post-title">${post.title}</h1>
@@ -663,7 +663,7 @@ async function initPost() {
           </div>
           <a href="${frontendBase()}/@${post.author}/${post.permlink}"
              target="_blank" rel="noopener" class="hive-link">
-            View on Hive →
+            Ver en Hive →
           </a>
         </footer>
       </article>
@@ -691,7 +691,7 @@ async function initPost() {
                 </div>
                 <div class="comment-body">${renderMarkdown(sanitizeCommentBody(c.body))}</div>
               </div>`).join("")
-          : `<p class="empty-state" style="padding:1.5rem 0">No comments yet.</p>`
+          : `<p class="empty-state" style="padding:1.5rem 0">Aún no hay comentarios.</p>`
         }
       </section>
     `;
