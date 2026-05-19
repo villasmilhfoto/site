@@ -428,7 +428,7 @@ async function loadPostList(startAuthor, startPermlink) {
   } catch (err) {
     if (loading)   loading.style.display = "none";
     if (container) container.innerHTML =
-      `<p class="error-state">Could not load posts. Please try again later.<br><small>${err.message}</small></p>`;
+      `<p class="error-state">Could not load posts. Inténtalo de nuevo más tarde.<br><small>${err.message}</small></p>`;
     console.error(err);
   }
 }
@@ -440,13 +440,13 @@ function renderPagination(hasPrev, hasNext, onPrev, onNext) {
 
   const prevBtn       = document.createElement("button");
   prevBtn.className   = "page-btn";
-  prevBtn.textContent = "← Newer";
+  prevBtn.textContent = "← Más reciente";
   prevBtn.disabled    = !hasPrev;   // disabled on page 1 — no 🚫 cursor
   if (hasPrev) prevBtn.onclick = onPrev;
 
   const nextBtn       = document.createElement("button");
   nextBtn.className   = "page-btn";
-  nextBtn.textContent = "Older →";
+  nextBtn.textContent = "Más antiguo →";
   nextBtn.disabled    = !hasNext;
   if (hasNext) nextBtn.onclick = onNext;
 
